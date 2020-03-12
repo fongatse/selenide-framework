@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "885d8184-ec6a-4380-bc26-14c76471f497",
+		"name": "skoda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "cars GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b82722b5-eefc-4533-ab6b-959ef32569bb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/v1/pm/cars/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"pm",
+						"cars",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orders POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "63956802-b3da-40f2-8651-348b931d1f59",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"location\":{\"locationId\":1},\"paymentType\":{\"paymentTypeId\":1},\"customer\":{\"eMail\":\"milos.kolcak@gmail.com\",\"phone\":\"725938838\",\"lastName\":\"asfasfa\",\"firstName\":\"asfasf\"},\"cars\":[{\"car\":{\"carId\":1},\"quantity\":3}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v1/om/orders/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"om",
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
