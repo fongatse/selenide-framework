@@ -1,4 +1,4 @@
-package resources.pages.components;
+package resources.components.global;
 
 /**
  * class containing the hamburger menu item locators

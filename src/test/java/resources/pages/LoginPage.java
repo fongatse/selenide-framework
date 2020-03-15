@@ -5,8 +5,8 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.json.simple.parser.ParseException;
 import resources.data.User;
-import resources.pages.components.LoginForm;
-import resources.pages.components.Navbar;
+import resources.components.login_page.LoginForm;
+import resources.components.global.Navbar;
 
 import java.io.IOException;
 

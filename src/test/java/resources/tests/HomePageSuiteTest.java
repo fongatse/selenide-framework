@@ -29,7 +29,7 @@ public class HomePageSuiteTest {
     }
 
     /**
-     * Happy path tests
+     * Navigation bar functionality test
      */
     @Test
     public void navigationBarTest(){

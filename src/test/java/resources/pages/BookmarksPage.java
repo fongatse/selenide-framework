@@ -1,6 +1,6 @@
 package resources.pages;
 
-import resources.pages.components.Navbar;
+import resources.components.global.Navbar;
 
 public class BookmarksPage extends Navbar {
 }

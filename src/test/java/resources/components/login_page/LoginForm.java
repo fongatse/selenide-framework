@@ -1,4 +1,4 @@
-package resources.pages.components;
+package resources.components.login_page;
 
 /**
  * List of locators and elements in the Login Form
