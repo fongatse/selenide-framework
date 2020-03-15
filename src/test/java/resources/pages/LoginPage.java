@@ -1,52 +1,56 @@
 package resources.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.json.simple.parser.ParseException;
+import resources.data.User;
+import resources.pages.components.LoginForm;
+import resources.pages.components.Navbar;
+
+import java.io.IOException;
 
 import static com.codeborne.selenide.Selenide.$;
+
 
 /**
  * Class with elements and methods for Login page.
  */
-public class LoginPage extends PageObject {
-    /**
-     * List of locators and elements on the page.
-     */
-    private String EMAIL_FIELD_LOCATOR = "#email";
-    private String PASSWORD_FIELD_LOCATOR = "#password";
-    private String LOGIN_BUTTON_LOCATOR = ".button--primary.w--100p";
+public class LoginPage extends Navbar {
 
-    private SelenideElement emailField = $(EMAIL_FIELD_LOCATOR),
-            passwordField = $(PASSWORD_FIELD_LOCATOR),
-            loginButton = $(LOGIN_BUTTON_LOCATOR);
+    LoginForm loginForm = new LoginForm();
+
+    private SelenideElement emailField = $(loginForm.getEMAIL_FIELD_LOCATOR()),
+            passwordField = $(loginForm.getPASSWORD_FIELD_LOCATOR()),
+            loginButton = $(loginForm.getLOGIN_BUTTON_LOCATOR()),
+    invalidLoginMessage = $(loginForm.getINVALID_LOGIN_MESSAGE_LOCATOR());
+
+    public LoginPage() throws IOException, ParseException {
+    }
 
     /**
      * Logging in with email and password.
-     * @param email is user email.
-     * @param password is user password.
      * @return DashboardPage
      */
-    public DashboardPage loginWithAccount(String email, String password) {
-        return setEmail(email).setPassword(password).clickLogin();
+    public LoginPage loginWithAccount(User user) {
+        return setEmail(user).setPassword(user);
     }
 
     /**
      * Set user email to the field.
-     * @param email is user email.
      * @return LoginPage
      */
-    public LoginPage setEmail(String email) {
-        emailField.setValue(email);
+    private LoginPage setEmail(User user) {
+        emailField.setValue(user.getEmail());
         return this;
     }
 
     /**
      * Set user password
-     * @param password is user password.
      * @return LoginPage
      */
-    public LoginPage setPassword (String password) {
-        passwordField.setValue(password);
+    private LoginPage setPassword (User user) {
+        passwordField.setValue(user.getPassword());
         return this;
     }
 
@@ -54,8 +58,19 @@ public class LoginPage extends PageObject {
      * Click Login button action.
      * @return DashboardPage
      */
-    public DashboardPage clickLogin () {
+    public HomePage clickLogin () {
         loginButton.click();
-        return Selenide.page(DashboardPage.class);
+        return Selenide.page(HomePage.class);
+    }
+
+    /**
+     * Click Login and verify error message
+     * @return LoginPage
+     */
+    public LoginPage verifyInvalidLogin(){
+        loginButton.click();
+        invalidLoginMessage.should(Condition.exist);
+        invalidLoginMessage.shouldBe(Condition.visible);
+        return this;
     }
 }
