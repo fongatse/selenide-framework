@@ -34,4 +34,4 @@ user are parsed from a JSON format and used in different tests.
 * Selenide
 * JSON Simple
 
-*For the description of the individual methods and classes a JAVADOC file is part of this project*
+*For the description of the individual methods and classes a JAVADOC package is part of this project*
