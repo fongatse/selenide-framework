@@ -1,0 +1,6 @@
+resources.components.global
+resources.components.login_page
+resources.components.novel_page
+resources.data
+resources.pages
+resources.tests
