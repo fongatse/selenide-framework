@@ -19,12 +19,13 @@ user are parsed from a JSON format and used in different tests.
 
 *The tests are organised in the following structure:*
 
-* resources
+* the path to the tests is: _src/test/java_
   * _components_ - this package has individual components that can be found on a specifici page, components are divided into packages based
                  on the page they're on.
-  * _data_ - this package contains JSON user data and the JSON Parser class
   * _pages_ - this package contains page objects
   * _tests_ - this package contains test suites 
+* resources
+  * _data_ - this package contains JSON files that hold user information that is used in the test
   
 
 ## Maven Dependencies Used
