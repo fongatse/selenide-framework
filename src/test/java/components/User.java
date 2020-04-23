@@ -32,10 +32,6 @@ public class User {
         this.password = jsonobject.get("password").toString();
     }
 
-    private void setJsonPath(String path) {
-        this.jsonPath = path;
-    }
-
     public String getEmail() {
         return email;
     }
