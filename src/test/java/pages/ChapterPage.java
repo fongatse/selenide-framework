@@ -11,7 +11,8 @@ public class ChapterPage extends Navbar {
     }
 
     public ChapterPage bookmarkChapter() {
-    chapter.bookmarkChapter();
-    return this;
+        closeAd();
+        chapter.bookmarkChapter();
+        return this;
     }
 }

@@ -1,8 +1,11 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+
 import components.User;
 import org.json.simple.parser.ParseException;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pages.HomePage;
@@ -57,4 +60,9 @@ public class LoginSuiteTest {
                 .loginWithAccount(invalidUser)
                 .verifyInvalidLogin();
     }
+
+    @After
+    public void TearDown(){
+        Selenide.closeWebDriver();
+           } 
 }

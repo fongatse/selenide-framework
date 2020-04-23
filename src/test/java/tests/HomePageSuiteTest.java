@@ -1,6 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pages.HomePage;
@@ -38,4 +41,9 @@ public class HomePageSuiteTest {
     homePage.resources();
     homePage.login();
     }
+
+    @After
+    public void TearDown(){
+        Selenide.closeWebDriver();
+           } 
 }

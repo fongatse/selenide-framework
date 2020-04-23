@@ -1,0 +1,16 @@
+pages/BookmarksPage.class
+pages/ChapterPage.class
+components/novel_page/NovelInfo.class
+pages/HomePage.class
+components/novel_page/ChaptersTab.class
+components/chapter_page/Chapter.class
+components/global/HamburgerMenu.class
+tests/HomePageSuiteTest.class
+pages/NovelPage.class
+components/global/Navbar.class
+components/login_page/LoginForm.class
+components/bookmarks_page/Bookmarks.class
+tests/LoginSuiteTest.class
+tests/BookmarksSuiteTest.class
+pages/LoginPage.class
+pages/PageObject.class
