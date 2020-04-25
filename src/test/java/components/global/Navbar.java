@@ -3,6 +3,11 @@ package components.global;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.conditions.Visible;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.By.ByXPath;
+
 import pages.*;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -34,6 +39,7 @@ public class Navbar extends PageObject {
 
     /*Hamburger menu elements*/
     private SelenideElement logout = $(getLOGOUT());
+    private SelenideElement settings = $(By.xpath(getSETTINGS()));
     /*Search tab elements*/
     private SelenideElement searchItem = $(SEARCH_ITEM_LOCATOR);
     /*Ads */
@@ -43,6 +49,11 @@ public class Navbar extends PageObject {
     public String getLOGOUT() {
         return hamburger.getLOGOUT_LOCATOR();
     }
+
+    public String getSETTINGS(){
+       return hamburger.getSETTINGS_LOCATOR();
+    }
+
 
     /**
      * search and find specified novel, clicks on first entry only
@@ -114,5 +125,12 @@ public class Navbar extends PageObject {
         hamburgerMenu.shouldBe(Condition.not(Condition.visible));
         return Selenide.page(HomePage.class);
 
+    }
+
+    public void settings(){
+        isLoggedIn();
+        hamburgerMenu.click();
+        settings.shouldBe(Condition.visible);
+        settings.click();
     }
 }

@@ -35,6 +35,16 @@ public class LoginPage extends Navbar {
     public LoginPage loginWithAccount(User user) {
         return setEmail(user).setPassword(user);
     }
+    
+    /** 
+     * logs in with old password
+     * @param user
+     * @return LoginPage
+     */
+    public LoginPage verifyOldPasswordInactive(User user){
+         setEmail(user).setOldPassword(user);
+         return verifyInvalidLogin();
+    }
 
     /**
      * Set user email to the field.
@@ -51,6 +61,17 @@ public class LoginPage extends Navbar {
      */
     private LoginPage setPassword (User user) {
         passwordField.setValue(user.getPassword());
+        return this;
+    }
+
+    
+    /** 
+     * Sets password before password change
+     * @param user
+     * @return LoginPage
+     */
+    private LoginPage setOldPassword(User user){
+        passwordField.setValue(user.getOldPassword());
         return this;
     }
 
@@ -73,4 +94,5 @@ public class LoginPage extends Navbar {
         invalidLoginMessage.shouldBe(Condition.visible);
         return this;
     }
+
 }

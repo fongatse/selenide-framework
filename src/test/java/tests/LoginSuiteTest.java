@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pages.HomePage;
+import pages.SettingsPage;
 
 import java.io.IOException;
 
@@ -22,8 +23,10 @@ public class LoginSuiteTest {
      * Declaring instances which will be used in the tests.
      */
     HomePage homePage;
+    SettingsPage settingsPage;
     User validUser;
     User invalidUser;
+
 
     /**
      * Inicialization of the browser and all instances which are necessary for this tests.
@@ -37,6 +40,7 @@ public class LoginSuiteTest {
         homePage = new HomePage();
         validUser = new User("src/test/resources/data/user.json");
         invalidUser = new User("src/test/resources/data/invalid_user.json");
+        settingsPage = new SettingsPage(validUser);
     }
 
     /**
@@ -59,6 +63,33 @@ public class LoginSuiteTest {
         homePage.login()
                 .loginWithAccount(invalidUser)
                 .verifyInvalidLogin();
+    }
+
+     /**
+     * Test password change functionality
+     */
+    @Test
+    public void changePasswordTest(){
+        homePage.login()
+                .loginWithAccount(validUser)
+                .clickLogin()
+                .isLoggedIn()
+                .settings();
+        settingsPage.changeToRandomPassword(validUser)
+                    .logOut()
+                    .login()
+                    .verifyOldPasswordInactive(validUser)
+                    .loginWithAccount(validUser)
+                    .clickLogin()
+                    .isLoggedIn()
+                    .settings();
+        settingsPage.revertToOldPassword(validUser)
+                    .logOut()
+                    .login()
+                    .loginWithAccount(validUser)
+                    .clickLogin()
+                    .isLoggedIn()
+                    .logOut();
     }
 
     @After
