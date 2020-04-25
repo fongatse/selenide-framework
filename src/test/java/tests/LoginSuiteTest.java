@@ -44,7 +44,7 @@ public class LoginSuiteTest {
     }
 
     /**
-     * Happy path test
+     * Happy path login test
      */
     @Test
     public void loginTest() {
@@ -56,7 +56,7 @@ public class LoginSuiteTest {
     }
 
     /**
-     * Negative path test
+     * Negative path login test
      */
     @Test
     public void loginNEGTest() {
