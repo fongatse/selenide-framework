@@ -3,11 +3,7 @@ package components.global;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.conditions.Visible;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.By.ByXPath;
-
 import pages.*;
 
 import static com.codeborne.selenide.Selenide.$;
